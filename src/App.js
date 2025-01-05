@@ -35,15 +35,17 @@ function App() {
   };
 
   const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+    const updatedTaskList=tasks.filter((task) => task.id !== id)
+    setTasks(updatedTaskList)
+    localStorage.setItem("tasks", JSON.stringify(updatedTaskList));
   };
 
   const toggleCompletion = (id) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task
-      )
-    );
+    const updatedTaskList=tasks.map((task) =>
+      task.id === id ? { ...task, completed: !task.completed } : task
+    )
+    setTasks(updatedTaskList)
+  localStorage.setItem("tasks", JSON.stringify(updatedTaskList));
   };
 
   return (
